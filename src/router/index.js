@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -8,15 +7,62 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    redirect: { name: 'book-list' }
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/books',
+    name: 'book-list',
+    component: () => import('../views/book/list.vue')
+  },
+  {
+    path: '/book/new',
+    name: 'book-new',
+    component: () => import('../views/book/new.vue')
+  },
+  {
+    path: '/book/:id',
+    name: 'book-show',
+    props: true,
+    component: () => import('../views/book/show.vue')
+  },
+  {
+    path: '/users',
+    name: 'user-list',
+    component: () => import('../views/user/list.vue')
+  },
+  {
+    path: '/user/new',
+    name: 'user-new',
+    component: () => import('../views/user/new.vue')
+  },
+  {
+    path: '/user/:id',
+    name: 'user-show',
+    props: true,
+    redirect: {
+      name: 'user-show-book-list'
+    },
+    component: () => import('../views/user/show/index.vue'),
+    children: [
+      {
+        name: 'user-show-book-list',
+        path: 'books',
+        props: true,
+        component: () => import('../views/user/show/books.vue')
+      }
+    ]
+  },
+  {
+    path: '/user/:id/edit',
+    name: 'user-edit',
+    props: true,
+    component: () => import('../views/user/edit.vue')
+  },
+  {
+    path: '/user/:id/loan/new',
+    name: 'loan-new',
+    props: true,
+    component: () => import('../views/loan/new.vue')
   }
 ]
 
