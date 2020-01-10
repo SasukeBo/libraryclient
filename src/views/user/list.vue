@@ -29,14 +29,14 @@
       </el-table-column>
       <el-table-column min-width="200px">
         <template slot="header">
-          <el-button type="primary" @click="addBook()">Add Book</el-button>
+          <el-button type="primary" @click="addUser()">Add User</el-button>
         </template>
 
         <template slot-scope="scope">
-          <el-button type="info" @click="showBook(scope.row.id)"
+          <el-button type="info" @click="showUser(scope.row.id)"
             >Details</el-button
           >
-          <el-button type="danger" @click="deleteBook(scope.row.id)"
+          <el-button type="danger" @click="deleteUser(scope.row.id)"
             >Delete</el-button
           >
         </template>
@@ -61,13 +61,13 @@ export default {
     })
   },
   methods: {
-    addBook() {
+    addUser() {
       this.$router.push({ name: 'user-new' })
     },
-    showBook(id) {
+    showUser(id) {
       this.$router.push({ name: 'user-show', params: { id } })
     },
-    deleteBook(id) {
+    deleteUser(id) {
       xhttp(`/users/${id}`, 'DELETE', result => {
         var index = this.users.findIndex(u => u.id === id)
         this.users.splice(index, 1)
