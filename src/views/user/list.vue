@@ -1,19 +1,21 @@
 <template>
   <div class="user-list">
     <div style="max-width: 300px;">
-      <el-input v-model="search" placeholder="search user by name"></el-input>
+      <el-input v-model="search" placeholder="search user by Name or Bar Code"></el-input>
     </div>
 
     <el-table
       :data="
-        users.filter(u =>
-          u.name.toLowerCase().includes(this.search.toLowerCase())
+        users.filter(
+          u =>
+            u.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            u.barcode.includes(this.search)
         )
       "
     >
       <el-table-column prop="id" label="ID"></el-table-column>
       <el-table-column prop="name" label="Name"></el-table-column>
-      <el-table-column prop="barcode" label="Barcode"></el-table-column>
+      <el-table-column prop="barcode" label="Bar Code"></el-table-column>
       <el-table-column prop="memberType" label="Member Type"></el-table-column>
       <el-table-column label="Created At">
         <template slot-scope="scope">
