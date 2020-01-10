@@ -32,13 +32,21 @@
       <span class="value">{{ new Date(book.updatedAt).toLocaleString() }}</span>
     </div>
 
-    <el-button
-      type="danger"
-      @click="deleteBook()"
-      icon="el-icon-delete"
-      style="margin-top: 64px;"
-      >Delete</el-button
-    >
+    <div>
+      <el-button
+        type="info"
+        @click="$router.go(-1)"
+        style="margin-top: 64px;"
+        >Back</el-button
+      >
+      <el-button
+        type="danger"
+        @click="deleteBook()"
+        icon="el-icon-delete"
+        style="margin-top: 64px;"
+        >Delete</el-button
+      >
+    </div>
   </div>
 </template>
 <script>

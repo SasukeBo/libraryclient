@@ -28,6 +28,7 @@
     </div>
 
     <div class="operations">
+      <el-button type="info" @click="$router.go(-1)">Back</el-button>
       <el-button type="primary" icon="el-icon-edit" @click="editUser(id)">Edit</el-button>
       <el-button type="danger" icon="el-icon-delete" @click="deleteUser()">Delete</el-button>
     </div>

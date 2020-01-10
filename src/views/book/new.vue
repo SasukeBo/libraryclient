@@ -16,6 +16,7 @@
       </el-form-item>
 
       <el-form-item>
+        <el-button type="info" @click="$router.go(-1)">Back</el-button>
         <el-button type="primary" @click="submit">Submit</el-button>
       </el-form-item>
     </el-form>
@@ -35,9 +36,9 @@ export default {
         isbn: [{ required: true, trigger: 'blur' }]
       },
       form: {
-        title: 'Building Library Systems',
-        name: 'David',
-        isbn: '3985789305'
+        title: '',
+        name: '',
+        isbn: ''
       }
     }
   },

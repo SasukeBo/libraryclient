@@ -19,6 +19,7 @@
       </el-form-item>
 
       <el-form-item>
+        <el-button type="info" @click="$router.go(-1)">Back</el-button>
         <el-button type="primary" @click="submit">Submit</el-button>
       </el-form-item>
     </el-form>
